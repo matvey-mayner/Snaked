@@ -16,8 +16,8 @@ def command_obr(Str):
     global line, value, line_num, file_batch, if_obr
     command = Str.split()
     
-    if command[0].startswith("pause"):
-        if not command[0].endswith(">nul"):
+    if command[0].startswith("пауза"):
+        if not command[0].endswith(">нул"):
             print("Для продолжения нажмите любую клавишу...")
         keyboard.read_event()
 
@@ -27,7 +27,7 @@ def command_obr(Str):
         result = ' '.join(words_after)
         os.system(result)
 
-    if command[0] == "goto":
+    if command[0] == "иди в":
         with open(file_batch, 'r') as file:
             lines = file.readlines()
 
@@ -37,7 +37,7 @@ def command_obr(Str):
                     if label_name == command[1]:
                         line_num = idx
              
-    if command[0] == "input":
+    if command[0] == "вставить":
         index = command.index("=")
         words_after = command[index + 1:]
         result = ' '.join(words_after)
@@ -45,7 +45,7 @@ def command_obr(Str):
         set_valuse = f"set {command[1]} {inp}"
         command_obr(set_valuse)
         
-    if command[0] == "set":
+    if command[0] == "поставить":
         if command[1] == "/p":
             index = command.index("=")
             words_after = command[index + 1:]
@@ -90,16 +90,16 @@ def command_obr(Str):
 
             value = temp  # Присваиваем обновленное значение переменной value
 
-    if command[0] == "exit":
+    if command[0] == "выйти":
         sys.exit()
 
-    if command[0] == "if":
+    if command[0] == "если":
         if command[2] == "==" and command[1] != command[3]:
             if_obr = False
         if command[2] == "!=" and command[1] == command[3]:
             if_obr = False
 
-    if command[0] == "echo":
+    if command[0] == "эхо":
         index = command.index("echo")
         words_after = command[index + 1:]
         result = ' '.join(words_after)
