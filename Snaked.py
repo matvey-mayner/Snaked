@@ -17,11 +17,11 @@ def command_obr(Str):
     command = Str.split()
     
     if command[0].startswith("пауза"):
-        if not command[0].endswith(">нул"):
+        if not command[0].endswith(">nul"):
             print("Для продолжения нажмите любую клавишу...")
         keyboard.read_event()
 
-    if command[0] == "sys":
+    if command[0] == "система":
         index = command.index("sys")
         words_after = command[index + 1:]
         result = ' '.join(words_after)
